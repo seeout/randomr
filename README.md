@@ -1,6 +1,6 @@
-# Randomr
+# randomr
 
-> Chat with randomr strangers
+> 
 
 ## About
 
@@ -14,7 +14,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
     
     ```
-    cd path/to/Randomr; npm install
+    cd path/to/randomr; npm install
     ```
 
 3. Start your app

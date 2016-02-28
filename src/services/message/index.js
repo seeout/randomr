@@ -5,11 +5,13 @@ const NeDB = require('nedb');
 const service = require('feathers-nedb');
 const hooks = require('./hooks');
 
+console.log('messages loaded');
+
 module.exports = function(){
   const app = this;
 
   const db = new NeDB({
-    filename: path.join(app.get('nedb'), 'users.db'),
+    filename: path.join(app.get('nedb'), 'messages.db'),
     autoload: true
   });
 
@@ -22,14 +24,14 @@ module.exports = function(){
   };
 
   // Initialize our service with any options it requires
-  app.use('/users', service(options));
+  app.use('/messages', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const userService = app.service('/users');
+  const messageService = app.service('/messages');
 
   // Set up our before hooks
-  userService.before(hooks.before);
+  messageService.before(hooks.before);
 
   // Set up our after hooks
-  userService.after(hooks.after);
+  messageService.after(hooks.after);
 };

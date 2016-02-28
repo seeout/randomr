@@ -1,6 +1,7 @@
 {
-  "host": "Randomr-app.feathersjs.com",
+  "host": "randomr-app.feathersjs.com",
   "port": 80,
+  "nedb": "NEDB_BASE_PATH",
   "public": "../public/",
   "auth": {
     "token": {
