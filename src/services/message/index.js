@@ -5,8 +5,6 @@ const NeDB = require('nedb');
 const service = require('feathers-nedb');
 const hooks = require('./hooks');
 
-console.log('messages loaded');
-
 module.exports = function(){
   const app = this;
 

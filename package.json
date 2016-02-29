@@ -31,6 +31,7 @@
     "feathers-configuration": "^0.1.0",
     "feathers-errors": "^2.0.1",
     "feathers-hooks": "^1.0.0",
+    "feathers-memory": "^0.6.3",
     "feathers-nedb": "^2.2.2",
     "feathers-rest": "^1.0.0",
     "feathers-socketio": "^1.0.0",

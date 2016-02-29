@@ -2,9 +2,6 @@
 
 const globalHooks = require('../../../hooks');
 
-const afterFind = (params) => {
-  params.result.data = params.result.data.map(m => { m.text = 'haka'; return m })
-};
 
 exports.before = {
   all: [],
@@ -18,7 +15,7 @@ exports.before = {
 
 exports.after = {
   all: [],
-  find: [afterFind],
+  find: [],
   get: [],
   create: [],
   update: [],

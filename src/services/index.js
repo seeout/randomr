@@ -1,5 +1,6 @@
 'use strict';
 
+const dogs = require('./dogs');
 const authentication = require('./authentication');
 const message = require('./message');
 const user = require('./user');
@@ -12,7 +13,5 @@ module.exports = function() {
   app.configure(user);
   app.configure(message);
 
-  app.service('/auth/local').before({
-    create: hooks.toLowerCase({fieldName: 'username'})
-  });
+  app.configure(dogs);
 };
