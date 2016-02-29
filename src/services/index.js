@@ -1,6 +1,11 @@
 'use strict';
 
-const dogs = require('./dogs');
+const cat = require('./cat');
+
+const dog = require('./dog');
+
+const animal = require('./animal');
+
 const authentication = require('./authentication');
 const message = require('./message');
 const user = require('./user');
@@ -13,5 +18,7 @@ module.exports = function() {
   app.configure(user);
   app.configure(message);
 
-  app.configure(dogs);
+  app.configure(animal);
+  app.configure(dog);
+  app.configure(cat);
 };

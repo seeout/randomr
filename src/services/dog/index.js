@@ -1,12 +1,20 @@
 'use strict';
 
-const service = require('feathers-memory');
+const path = require('path');
+const NeDB = require('nedb');
+const service = require('feathers-nedb');
 const hooks = require('./hooks');
 
 module.exports = function(){
   const app = this;
 
+  const db = new NeDB({
+    filename: path.join(app.get('nedb'), 'dogs.db'),
+    autoload: true
+  });
+
   let options = {
+    Model: db,
     paginate: {
       default: 5,
       max: 25
@@ -17,11 +25,11 @@ module.exports = function(){
   app.use('/dogs', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const dogsService = app.service('/dogs');
+  const dogService = app.service('/dogs');
 
   // Set up our before hooks
-  dogsService.before(hooks.before);
+  dogService.before(hooks.before);
 
   // Set up our after hooks
-  dogsService.after(hooks.after);
+  dogService.after(hooks.after);
 };
