@@ -17,16 +17,17 @@ class Service {
     const dogs = this.app.service('dogs');
     const cats = this.app.service('cats');
 
-    let compareOwnerName = (animal) => animal.owner.toLowerCase() == params.query.name.toLowerCase()
     let cleanId = (animal) => {
       delete animal['_id']
       return animal
     }
 
-    return Promise.all([dogs.find(), cats.find()]).then(animals => {
+    let ownerQuery = {query: {owner: params.query.name}};
+
+    return Promise.all([dogs.find(ownerQuery), cats.find(ownerQuery)]).then(animals => {
       let resolution = {
-        dogs: animals[0].data.filter(compareOwnerName).map(cleanId),
-        cats: animals[1].data.filter(compareOwnerName).map(cleanId)
+        dogs: animals[0].data.map(cleanId),
+        cats: animals[1].data.map(cleanId)
       };
       return Promise.resolve(resolution);
     });
